@@ -81,7 +81,7 @@ Material:
       second: 0
     - first:
         name: _Cookness
-      second: 0.266
+      second: 0
     - first:
         name: _Cutoff
       second: 0.5
