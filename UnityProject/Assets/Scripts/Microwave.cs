@@ -20,6 +20,7 @@ public class Microwave : MonoBehaviour {
 	float cookPoints;
 	float energyLevel;
 	float time;
+	bool burnt;
 
 	float nextTick;
 	bool stopped = false;
@@ -58,6 +59,8 @@ public class Microwave : MonoBehaviour {
 		cookPoints = initialCookPoints;
 		energyLevel = 0.0f;
 		time = roundTime;
+		burnt = false;
+		visual.ResetGameResult();
 	}
 
 	void RunTick() {
@@ -70,6 +73,7 @@ public class Microwave : MonoBehaviour {
 	void AddEnergy() {
 		energyLevel += gainPerAction;
 		if ( energyLevel > burnEnergy ) {
+			burnt = true;
 			LostLevel();
 		}
 	}
@@ -77,11 +81,13 @@ public class Microwave : MonoBehaviour {
 	void WonLevel() {
 		Debug.Log("WON LEVEL!!!");
 		stopped = true;
+		visual.SetWin();
 	}
 
 	void LostLevel() {
 		Debug.Log("LOST LEVEL!!!!");
 		stopped = true;
+		visual.SetLose();
 	}
 
 	void UpdateVisuals() {
@@ -90,6 +96,8 @@ public class Microwave : MonoBehaviour {
 		remTimeText.text = time.ToString();
 		visual.SetTime(time);
 		visual.SetEnergyLevel(energyLevel / burnEnergy);
+		visual.SetCookLevel(1.0f - (cookPoints / initialCookPoints));
+		visual.SetFoodBurnt(burnt);
 	}
 
 }
