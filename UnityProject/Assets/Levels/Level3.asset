@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c1f2efc03dc3943a298bc8cff11083, type: 3}
+  m_Name: Level3
+  m_EditorClassIdentifier: 
+  initialCookPoints: 400
+  burnEnergy: 41
+  gainPerAction: 2
+  decayPerSec: 5
+  roundTime: 15
+  foodSprite: {fileID: 21300000, guid: 58cdb1669b6ff1e47a89df71d3a92458, type: 3}

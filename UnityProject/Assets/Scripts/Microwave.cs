@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class Microwave : MonoBehaviour {
 
-	public float initialCookPoints;
 	public float timeTick;
+
+	public float initialCookPoints;
 	public float burnEnergy;
 	public float gainPerAction;
 	public float decayPerSec;
@@ -16,6 +17,7 @@ public class Microwave : MonoBehaviour {
 	public Image energyBar;
 	public Text remTimeText;
 	public MicrowaveVisual visual;
+	public GameFlow gameFlow;
 
 	float cookPoints;
 	float energyLevel;
@@ -23,20 +25,22 @@ public class Microwave : MonoBehaviour {
 	bool burnt;
 
 	float nextTick;
-	bool stopped = false;
+	bool stopped = true;
 
-	void Start() {
+	public void StartLevel(LevelData data) {
+		visual.gameObject.SetActive(true);
+		initialCookPoints = data.initialCookPoints;
+		burnEnergy = data.burnEnergy;
+		gainPerAction = data.gainPerAction;
+		decayPerSec = data.decayPerSec;
+		roundTime = data.roundTime;
 		InitSimulation();
-		nextTick = timeTick;
+		UpdateVisuals();
+		visual.SetFoodSprite(data.foodSprite);
 	}
 
 	void Update() {
 		if ( stopped ) {
-			if ( Input.GetKeyDown(KeyCode.R) ) {
-				InitSimulation();
-				nextTick = timeTick;
-				stopped = false;
-			}
 			return;
 		}
 		nextTick -= Time.deltaTime;
@@ -45,6 +49,7 @@ public class Microwave : MonoBehaviour {
 			RunTick();
 		}
 		energyLevel -= decayPerSec * Time.deltaTime;
+		if ( energyLevel < 0.0f ) energyLevel = 0.0f;
 		time -= Time.deltaTime;
 		if ( time <= 0.0f ) {
 			LostLevel();
@@ -56,11 +61,13 @@ public class Microwave : MonoBehaviour {
 	}
 
 	void InitSimulation() {
+		nextTick = timeTick;
 		cookPoints = initialCookPoints;
 		energyLevel = 0.0f;
 		time = roundTime;
 		burnt = false;
 		visual.ResetGameResult();
+		stopped = false;
 	}
 
 	void RunTick() {
@@ -82,12 +89,14 @@ public class Microwave : MonoBehaviour {
 		Debug.Log("WON LEVEL!!!");
 		stopped = true;
 		visual.SetWin();
+		gameFlow.WonLevel();
 	}
 
 	void LostLevel() {
 		Debug.Log("LOST LEVEL!!!!");
 		stopped = true;
 		visual.SetLose();
+		gameFlow.LostLevel();
 	}
 
 	void UpdateVisuals() {

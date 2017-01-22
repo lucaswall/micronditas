@@ -42,4 +42,8 @@ public class MicrowaveVisual : MonoBehaviour {
 		gameResultLabel.text = "YOU LOSE!";
 	}
 
+	public void SetFoodSprite(Sprite spr) {
+		foodSpr.sprite = spr;
+	}
+
 }

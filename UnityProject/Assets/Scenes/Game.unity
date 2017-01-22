@@ -159,6 +159,52 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 91880290}
+--- !u!1 &134686148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 134686149}
+  - component: {fileID: 134686150}
+  m_Layer: 0
+  m_Name: GameFlow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &134686149
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 134686148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 415.356, y: 250.18346, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &134686150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 134686148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92f71dc3fcb6a547b25a9aef68ff62b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels:
+  - {fileID: 11400000, guid: a2a90515fad3dcc4ebfbc3d0ec82fba0, type: 2}
+  - {fileID: 11400000, guid: ca5a97ea81047f24fa09c554c3dcdcf1, type: 2}
+  - {fileID: 11400000, guid: da546312414d9e94189f6f39b0c09c33, type: 2}
+  microwave: {fileID: 997504751}
+  infoLabel: {fileID: 440236233}
 --- !u!1 &411977724
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +406,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 58cdb1669b6ff1e47a89df71d3a92458, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -485,7 +531,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: babf3f26a0bd5da46836e81f57693a14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -639,8 +685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5634c1cb121c6a4e975a1bf416f4aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialCookPoints: 500
   timeTick: 1
+  initialCookPoints: 500
   burnEnergy: 100
   gainPerAction: 10
   decayPerSec: 5
@@ -649,6 +695,7 @@ MonoBehaviour:
   energyBar: {fileID: 91880292}
   remTimeText: {fileID: 756419329}
   visual: {fileID: 1043455013}
+  gameFlow: {fileID: 134686150}
 --- !u!1 &1043455011
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,7 +711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1043455012
 Transform:
   m_ObjectHideFlags: 0
