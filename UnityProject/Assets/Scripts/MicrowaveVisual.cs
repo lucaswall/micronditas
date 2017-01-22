@@ -11,6 +11,10 @@ public class MicrowaveVisual : MonoBehaviour {
 	public Color energyMin, energyMax;
 	public SpriteRenderer foodSpr;
 	public Text gameResultLabel;
+	public AudioSource audioSource;
+	public AudioClip soundEnergyAction;
+	public AudioClip soundBurnt;
+	public AudioClip soundCooked;
 
 	public void SetTime(float t) {
 		if ( t < 0.0f ) t = 0.0f;
@@ -31,16 +35,31 @@ public class MicrowaveVisual : MonoBehaviour {
 		foodSpr.material.SetFloat("_Burnt", burnt ? 1.0f : 0.0f);
 	}
 
-	public void SetGameStatus(string status) {
-		gameResultLabel.text = status;
-	}
-
 	public void ResetGameResult() {
 		gameResultLabel.text = "";
 	}
 
 	public void SetFoodSprite(Sprite spr) {
 		foodSpr.sprite = spr;
+	}
+
+	public void EnergyAction() {
+		audioSource.PlayOneShot(soundEnergyAction);
+	}
+
+	public void Cooked() {
+		gameResultLabel.text = "COOKED! YEAH!";
+		audioSource.PlayOneShot(soundCooked);
+	}
+
+	public void Burnt() {
+		gameResultLabel.text = "YOU BURNED THE FOOD!";
+		audioSource.PlayOneShot(soundBurnt);
+	}
+
+	public void NoMoreTime() {
+		gameResultLabel.text = "NO MORE TIME!";
+		audioSource.PlayOneShot(soundBurnt);
 	}
 
 }
