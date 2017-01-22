@@ -88,10 +88,10 @@ Shader "Micronditas/Food"
 			fixed4 frag(v2f IN) : SV_Target
 			{
 				fixed4 c = SampleSpriteTexture (IN.texcoord) * IN.color;
-				c.rgb *= c.a;
 				c.r = (c.r + 0.7 * (1.0 - _Cookness)) * (1.0 - _Burnt);
 				c.g = (c.g + 0.7 * (1.0 - _Cookness)) * (1.0 - _Burnt);
 				c.b = (c.b + 0.7 * (1.0 - _Cookness)) * (1.0 - _Burnt);
+				c.rgb *= c.a;
 				return c;
 			}
 		ENDCG
