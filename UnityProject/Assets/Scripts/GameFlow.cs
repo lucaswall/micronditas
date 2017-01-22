@@ -8,6 +8,7 @@ public class GameFlow : MonoBehaviour {
 	public LevelData[] levels;
 	public Microwave microwave;
 	public Text infoLabel;
+	public AudioSource backgroundMusic;
 
 	int currentLevel;
 	bool stopped;
@@ -22,6 +23,9 @@ public class GameFlow : MonoBehaviour {
 		if ( stopped && Input.GetKeyDown(KeyCode.Space) ) {
 			stopped = false;
 			microwave.StartLevel(levels[currentLevel]);
+			if ( ! backgroundMusic.isPlaying ) {
+				backgroundMusic.Play();
+			}
 		}
 	}
 
