@@ -13,6 +13,7 @@ public class MicrowaveVisual : MonoBehaviour {
 	public Text gameResultLabel;
 
 	public void SetTime(float t) {
+		if ( t < 0.0f ) t = 0.0f;
 		int min = Mathf.FloorToInt(t / 60.0f);
 		int sec = Mathf.CeilToInt(t) % 60;
 		timerText.text = String.Format("{0:D2}:{1:D2}", min, sec);
@@ -30,16 +31,12 @@ public class MicrowaveVisual : MonoBehaviour {
 		foodSpr.material.SetFloat("_Burnt", burnt ? 1.0f : 0.0f);
 	}
 
+	public void SetGameStatus(string status) {
+		gameResultLabel.text = status;
+	}
+
 	public void ResetGameResult() {
 		gameResultLabel.text = "";
-	}
-
-	public void SetWin() {
-		gameResultLabel.text = "YOU WIN!";
-	}
-
-	public void SetLose() {
-		gameResultLabel.text = "YOU LOSE!";
 	}
 
 	public void SetFoodSprite(Sprite spr) {

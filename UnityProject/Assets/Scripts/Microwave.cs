@@ -52,6 +52,7 @@ public class Microwave : MonoBehaviour {
 		if ( energyLevel < 0.0f ) energyLevel = 0.0f;
 		time -= Time.deltaTime;
 		if ( time <= 0.0f ) {
+			visual.SetGameStatus("NO MORE TIME!");
 			LostLevel();
 		}
 		if ( Input.GetKeyDown(KeyCode.Space) ) {
@@ -81,6 +82,7 @@ public class Microwave : MonoBehaviour {
 		energyLevel += gainPerAction;
 		if ( energyLevel > burnEnergy ) {
 			burnt = true;
+			visual.SetGameStatus("YOU BURNED THE FOOD!");
 			LostLevel();
 		}
 	}
@@ -88,14 +90,13 @@ public class Microwave : MonoBehaviour {
 	void WonLevel() {
 		Debug.Log("WON LEVEL!!!");
 		stopped = true;
-		visual.SetWin();
+		visual.SetGameStatus("COOKED! YEAH!");
 		gameFlow.WonLevel();
 	}
 
 	void LostLevel() {
 		Debug.Log("LOST LEVEL!!!!");
 		stopped = true;
-		visual.SetLose();
 		gameFlow.LostLevel();
 	}
 

@@ -7,21 +7,23 @@ public class GameFlow : MonoBehaviour {
 
 	public LevelData[] levels;
 	public Microwave microwave;
-	public Text infoLabel;
 	public AudioSource backgroundMusic;
+	public GameObject pressSpace;
+	public float waitTime;
 
 	int currentLevel;
-	bool stopped;
+	bool willReset;
 
 	void Start() {
 		currentLevel = 0;
-		stopped = true;
-		infoLabel.text = "PRESS SPACE";
+		willReset = true;
+		pressSpace.SetActive(true);
 	}
 
 	void Update() {
-		if ( stopped && Input.GetKeyDown(KeyCode.Space) ) {
-			stopped = false;
+		if ( willReset && Input.GetKeyDown(KeyCode.Space) ) {
+			willReset = false;
+			pressSpace.SetActive(false);
 			microwave.StartLevel(levels[currentLevel]);
 			if ( ! backgroundMusic.isPlaying ) {
 				backgroundMusic.Play();
@@ -31,11 +33,17 @@ public class GameFlow : MonoBehaviour {
 
 	public void WonLevel() {
 		if ( currentLevel < levels.Length - 1 ) currentLevel++;
-		stopped = true;
+		StartCoroutine(WaitAndAllowReset());
 	}
 
 	public void LostLevel() {
-		stopped = true;
+		StartCoroutine(WaitAndAllowReset());
+	}
+
+	IEnumerator WaitAndAllowReset() {
+		yield return new WaitForSeconds(waitTime);
+		willReset = true;
+		pressSpace.SetActive(true);
 	}
 
 }
