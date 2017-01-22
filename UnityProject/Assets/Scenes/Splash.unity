@@ -254,7 +254,7 @@ MonoBehaviour:
   fadeInTime: 2
   zoomInSpeed: 0.02
   totalSplashTime: 10
-  sceneName: Game
+  sceneName: MainMenu
 --- !u!4 &982889064
 Transform:
   m_ObjectHideFlags: 0
