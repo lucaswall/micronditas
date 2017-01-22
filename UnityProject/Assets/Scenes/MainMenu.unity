@@ -284,6 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startText: {fileID: 419529510}
   blinkSpeed: 0.4
+  nextScene: Game
 --- !u!114 &419529510
 MonoBehaviour:
   m_ObjectHideFlags: 0

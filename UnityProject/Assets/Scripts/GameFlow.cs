@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameFlow : MonoBehaviour {
 
@@ -21,7 +22,11 @@ public class GameFlow : MonoBehaviour {
 
 	void Update() {
 		if ( willReset && Input.GetKeyDown(KeyCode.Space) ) {
-			ResetLevel();
+			if ( currentLevel >= levels.Length ) {
+				SceneManager.LoadScene("TheEnd");
+			} else {
+				ResetLevel();
+			}
 		}
 	}
 
@@ -35,7 +40,7 @@ public class GameFlow : MonoBehaviour {
 	}
 
 	public void WonLevel() {
-		if ( currentLevel < levels.Length - 1 ) currentLevel++;
+		currentLevel++;
 		StartCoroutine(WaitAndAllowReset());
 	}
 

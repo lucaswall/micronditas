@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialCookPoints: 400
   burnEnergy: 41
-  gainPerAction: 2
+  gainPerAction: 2.5
   decayPerSec: 5
   roundTime: 15
-  foodSprite: {fileID: 21300000, guid: 58cdb1669b6ff1e47a89df71d3a92458, type: 3}
+  foodSprite: {fileID: 21300000, guid: 0d8a8d2d17adfd740bbb2cbf4b0abb02, type: 3}

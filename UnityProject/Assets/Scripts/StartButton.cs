@@ -7,6 +7,7 @@ public class StartButton : MonoBehaviour {
 
 	public MonoBehaviour startText;
 	public float blinkSpeed;
+	public string nextScene;
 
 	float nextBlink = 0.0f;
 
@@ -22,7 +23,7 @@ public class StartButton : MonoBehaviour {
 	void CheckForStartButton() {
 		if ( Input.GetKeyDown(KeyCode.Space) ) {
 			enabled = false;
-			SceneManager.LoadScene("Game");
+			SceneManager.LoadScene(nextScene);
 		}
 	}
 

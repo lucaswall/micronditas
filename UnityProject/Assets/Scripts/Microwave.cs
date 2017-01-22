@@ -60,6 +60,11 @@ public class Microwave : MonoBehaviour {
 		if ( Input.GetKeyDown(KeyCode.Space) ) {
 			AddEnergy();
 		}
+#if UNITY_EDITOR
+		if ( Input.GetKeyDown(KeyCode.C) ) {
+			cookPoints = 0;
+		}
+#endif
 	}
 
 	void UpdateTimer() {
