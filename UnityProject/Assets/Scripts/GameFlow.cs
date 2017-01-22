@@ -16,18 +16,21 @@ public class GameFlow : MonoBehaviour {
 
 	void Start() {
 		currentLevel = 0;
-		willReset = true;
-		pressSpace.SetActive(true);
+		ResetLevel();
 	}
 
 	void Update() {
 		if ( willReset && Input.GetKeyDown(KeyCode.Space) ) {
-			willReset = false;
-			pressSpace.SetActive(false);
-			microwave.StartLevel(levels[currentLevel]);
-			if ( ! backgroundMusic.isPlaying ) {
-				backgroundMusic.Play();
-			}
+			ResetLevel();
+		}
+	}
+
+	void ResetLevel() {
+		willReset = false;
+		pressSpace.SetActive(false);
+		microwave.StartLevel(levels[currentLevel]);
+		if ( ! backgroundMusic.isPlaying ) {
+			backgroundMusic.Play();
 		}
 	}
 

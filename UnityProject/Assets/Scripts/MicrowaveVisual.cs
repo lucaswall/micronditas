@@ -15,6 +15,7 @@ public class MicrowaveVisual : MonoBehaviour {
 	public AudioClip soundEnergyAction;
 	public AudioClip soundBurnt;
 	public AudioClip soundCooked;
+	public AudioClip soundNoMoreTime;
 
 	public void SetTime(float t) {
 		if ( t < 0.0f ) t = 0.0f;
@@ -59,7 +60,7 @@ public class MicrowaveVisual : MonoBehaviour {
 
 	public void NoMoreTime() {
 		gameResultLabel.text = "NO MORE TIME!";
-		audioSource.PlayOneShot(soundBurnt);
+		audioSource.PlayOneShot(soundNoMoreTime);
 	}
 
 }

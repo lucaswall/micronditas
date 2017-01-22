@@ -40,25 +40,34 @@ public class Microwave : MonoBehaviour {
 	}
 
 	void Update() {
-		if ( stopped ) {
-			return;
-		}
+		if ( ! stopped ) UpdateEnergy();
+		if ( ! stopped ) RunCookTick();
+		if ( ! stopped ) UpdateTimer();
+		UpdateVisuals();
+	}
+
+	void RunCookTick() {
 		nextTick -= Time.deltaTime;
 		if ( nextTick <= 0.0f ) {
 			nextTick += timeTick;
 			RunTick();
 		}
+	}
+
+	void UpdateEnergy() {
 		energyLevel -= decayPerSec * Time.deltaTime;
 		if ( energyLevel < 0.0f ) energyLevel = 0.0f;
+		if ( Input.GetKeyDown(KeyCode.Space) ) {
+			AddEnergy();
+		}
+	}
+
+	void UpdateTimer() {
 		time -= Time.deltaTime;
 		if ( time <= 0.0f ) {
 			visual.NoMoreTime();
 			LostLevel();
 		}
-		if ( Input.GetKeyDown(KeyCode.Space) ) {
-			AddEnergy();
-		}
-		UpdateVisuals();
 	}
 
 	void InitSimulation() {

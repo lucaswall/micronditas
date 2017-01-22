@@ -951,6 +951,7 @@ MonoBehaviour:
   soundEnergyAction: {fileID: 8300000, guid: ebe774ab44d6f7b43bdf5738633ad9a0, type: 3}
   soundBurnt: {fileID: 8300000, guid: aa18406ba14dd3b45aa7f15053278605, type: 3}
   soundCooked: {fileID: 8300000, guid: 9e327f2964469f6449e88a7382689c7e, type: 3}
+  soundNoMoreTime: {fileID: 8300000, guid: 82d1199c074bdcf4bafdc34dde0b4fd1, type: 3}
 --- !u!82 &1043455014
 AudioSource:
   m_ObjectHideFlags: 0
